@@ -103,7 +103,6 @@
           </el-table>
           <div style="padding: 10px 0">
             <el-pagination
-
                     :page-sizes="[5, 10, 15, 20]"
                     :page-size="10"
                     layout="total, sizes, prev, pager, next, jumper"
@@ -117,7 +116,6 @@
 </template>
 
 <script>
-
 
 export default {
   name: 'HomeView',
@@ -137,6 +135,14 @@ export default {
           headerBg: 'headerBg'
       }
   },
+
+    created(){
+      //请求分页查询数据
+      fetch("http://localhost:9090/user/page?pageNum=1&pageSize=2").then(res => res.json()).then(res => {
+        console.log(res)
+      })
+    },
+
     methods:{
       collapse(){  //点击收缩按钮触发
           this.isCollapse = !this.isCollapse

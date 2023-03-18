@@ -22,4 +22,11 @@ public interface UserMapper {
 
     @Delete("delete from sys_user where id = #{id}")
     Integer deleteById(@Param("id") Integer id);
+
+    @Select("select * from sys_user limit #{pageNum},#{pageSize}")
+    // List<User> selectPage(Integer pageNum ,Integer pageSize);
+    List<User> selectPage(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
+
+    @Select("select count(*) from sys_user")
+    Integer selectTotal();
 }
