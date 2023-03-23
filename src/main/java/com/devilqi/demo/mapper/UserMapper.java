@@ -1,12 +1,13 @@
 package com.devilqi.demo.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.devilqi.demo.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-@Mapper  //Repository
-public interface UserMapper {
+// @Mapper  //Repository
+public interface UserMapper extends BaseMapper<User> {
 
     @Select("SELECT * FROM sys_user")
     List<User> findAll();
@@ -23,10 +24,10 @@ public interface UserMapper {
     @Delete("delete from sys_user where id = #{id}")
     Integer deleteById(@Param("id") Integer id);
 
-    @Select("select * from sys_user limit #{pageNum},#{pageSize}")
-    // List<User> selectPage(Integer pageNum ,Integer pageSize);
-    List<User> selectPage(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
+    @Select("select * from sys_user where username like #{username} limit #{pageNum}, #{pageSize}")
+    // List<User> selectPage(Integer pageNum, Integer pageSize, String username);
+    List<User> selectPage(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize, @Param("username") String username);
 
-    @Select("select count(*) from sys_user")
-    Integer selectTotal();
+    @Select("select count(*) from sys_user where username like concat('%', #{username}, '%')")
+    Integer selectTotal(String username);
 }

@@ -22,9 +22,9 @@ public class UserController {
 
     // 新增和修改
     @PostMapping
-    public Integer save(@RequestBody User user){ //RequsetBody可以把前台的josn对象转换为后台java对象  save；新增+更新
+    public boolean save(@RequestBody User user){ //RequsetBody可以把前台的josn对象转换为后台java对象  save；新增+更新
         //新增或更新
-        return userService.save(user);
+        return userService.saveUser(user);
     }
 
     // 查询所有数据
@@ -45,10 +45,13 @@ public class UserController {
     // SELECT * FROM sys_user limit x,pageSize;
     // x = (pageNum - 1) * pageSize [limit的第一个参数]
     @GetMapping("/page") //接口路径：/user/page
-    public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize){
+    public Map<String, Object> findPage(@RequestParam Integer pageNum,
+                                        @RequestParam Integer pageSize,
+                                        @RequestParam String username) {
         pageNum = (pageNum - 1) * pageSize;
-        List<User> data = userMapper.selectPage(pageNum ,pageSize);
-        Integer total = userMapper.selectTotal();
+        username = "%" + username + "%";
+        List<User> data = userMapper.selectPage(pageNum, pageSize, username);
+        Integer total = userMapper.selectTotal(username);
         Map<String, Object> res = new HashMap<>();
         res.put("data", data);
         res.put("total", total);
