@@ -1,7 +1,8 @@
 <template>
   <div style="height: 100%">
     <el-container style="min-height: 100vh">
-      <el-aside width="sideWidth +  'px'" style="background-color: rgb(238, 241, 246);box-shadow: 2px 0 6px rgb(0 21 41)">
+
+      <el-aside :width="sideWidth + 'px'" style="background-color: rgb(238, 241, 246)">
         <el-menu :default-openeds="['1', '3']" style="min-height: 100%;overflow-x: hidden"
                  background-color="rgb(48,65,86)"
                  text-color="#fff"
@@ -13,9 +14,9 @@
             <img src="../assets/logo.png" alt="" style="width: 20px; position: relative; top: 5px; margin-right: 5px">
             <b style="color: white" v-show="logoTextShow">教学管理系统</b>
           </div>
+
           <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-message"></i>
+            <template slot="title"><i class="el-icon-message"></i>
               <span slot="title">导航一</span>
             </template>
             <el-menu-item-group title="分组2">
@@ -27,8 +28,7 @@
             </el-submenu>
           </el-submenu>
           <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-menu"></i>
+            <template slot="title"><i class="el-icon-menu"></i>
               <span slot="title">导航二</span>
             </template>
             <el-submenu index="2-4">
@@ -37,8 +37,7 @@
             </el-submenu>
           </el-submenu>
           <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-setting"></i>
+            <template slot="title"><i class="el-icon-setting"></i>
               <span slot="title">导航三</span>
             </template>
             <el-submenu index="3-4">
@@ -48,6 +47,7 @@
           </el-submenu>
         </el-menu>
       </el-aside>
+
 
       <el-container>
         <el-header style="font-size: 12px;border-bottom: 1px solid #ccc;line-height: 60px;display: flex">
@@ -81,10 +81,10 @@
           </div>
 
           <div style="margin: 10px 0">
-            <el-button type="primary">新增 <i class="el-icon-circle-plus-outline"></i></el-button>
-            <el-button type="danger">批量删除 <i class="el-icon-remove-outline"></i></el-button>
-            <el-button type="primary">导入 <i class="el-icon-bottom"></i></el-button>
-            <el-button type="primary">导出 <i class="el-icon-top"></i></el-button>
+            <el-button type="primary" plain>新增 <i class="el-icon-circle-plus-outline"></i></el-button>
+            <el-button type="danger" plain>批量删除 <i class="el-icon-remove-outline"></i></el-button>
+            <el-button type="primary" plain>导入 <i class="el-icon-bottom"></i></el-button>
+            <el-button type="primary" plain>导出 <i class="el-icon-top"></i></el-button>
           </div>
 
           <el-table :data="tableData" border stripe :header-cell-class-name="headerBg">
