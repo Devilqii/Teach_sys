@@ -29,7 +29,7 @@
           </el-submenu>
           <el-submenu index="2">
             <template slot="title"><i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
+              <span slot="title">导航二</span>-
             </template>
             <el-submenu index="2-4">
               <template slot="title">选项4</template>
@@ -96,8 +96,8 @@
             <el-table-column prop="address" label="地址"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
-                <el-button type="success">编辑 <i class="el-icon-edit"></i></el-button>
-                <el-button type="danger">删除 <i class="el-icon-remove-outline"></i></el-button>
+                <el-button type="success" plain>编辑 <i class="el-icon-edit"></i></el-button>
+                <el-button type="danger" plain>删除 <i class="el-icon-remove-outline"></i></el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -119,6 +119,8 @@
 </template>
 
 <script>
+
+
 
 export default {
   name: 'HomeView',
@@ -159,11 +161,8 @@ export default {
       },
       load() {
           //请求分页查询数据
-          fetch("http://localhost:9090/user/page?pageNum=" + this.pageNum + "&pageSize=" + this.pageSize + "&username=" + this.username)
-              .then(res => res.json()).then(res => {
+          this.request.get("http://localhost:9090/user/page?pageNum=" + this.pageNum + "&pageSize=" + this.pageSize + "&username=" + this.username).then(res => {
               console.log(res)
-              this.tableData = res.data
-              this.total = res.total
           })
       },
       handleSizeChange(pageSize) {
