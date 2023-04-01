@@ -43,6 +43,12 @@ public class UserController {
         return userService.removeById(id);
     }
 
+    //批量删除
+    @PostMapping("/del/batch")  //id为同一个参数 不能改变
+    public boolean deleteBatch(@RequestBody List<Integer> ids){
+        return userService.removeByIds(ids);
+    }
+
     //分页查询
     //@RequestParam接收  ?pageNum=1&pageSize=10
     // SELECT * FROM sys_user limit x,pageSize;
@@ -66,19 +72,20 @@ public class UserController {
     public IPage<User> findPage(@RequestParam Integer pageNum,
                                 @RequestParam Integer pageSize,
                                 @RequestParam (defaultValue = "") String username,
-                                @RequestParam (defaultValue = "") String nickname,
+                                @RequestParam (defaultValue = "") String email,
                                 @RequestParam (defaultValue = "") String address) {
         IPage<User> page = new Page<>(pageNum, pageSize);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         if (!"".equals(username)) {
             queryWrapper.like("username", username);
         }
-        if (!"".equals(nickname)) {
-            queryWrapper.like("nickname", nickname);
+        if (!"".equals(email)) {
+            queryWrapper.like("email", email);
         }
         if (!"".equals(address)) {
             queryWrapper.like("address", address);
         }
+        queryWrapper.orderByDesc("id");
         return userService.page(page, queryWrapper);
     }
 }
