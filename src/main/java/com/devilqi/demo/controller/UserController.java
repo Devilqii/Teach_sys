@@ -71,19 +71,19 @@ public class UserController {
     @GetMapping("/page") //接口路径：/user/page
     public IPage<User> findPage(@RequestParam Integer pageNum,
                                 @RequestParam Integer pageSize,
-                                @RequestParam (defaultValue = "") String username,
-                                @RequestParam (defaultValue = "") String email,
-                                @RequestParam (defaultValue = "") String address) {
+                                @RequestParam (defaultValue = "") String filename,
+                                @RequestParam (defaultValue = "") String courseno,
+                                @RequestParam (defaultValue = "") String coursename) {
         IPage<User> page = new Page<>(pageNum, pageSize);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        if (!"".equals(username)) {
-            queryWrapper.like("username", username);
+        if (!"".equals(filename)) {
+            queryWrapper.like("filename", filename);
         }
-        if (!"".equals(email)) {
-            queryWrapper.like("email", email);
+        if (!"".equals(courseno)) {
+            queryWrapper.like("courseno", courseno);
         }
-        if (!"".equals(address)) {
-            queryWrapper.like("address", address);
+        if (!"".equals(coursename)) {
+            queryWrapper.like("coursename", coursename);
         }
         queryWrapper.orderByDesc("id");
         return userService.page(page, queryWrapper);

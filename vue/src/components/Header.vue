@@ -4,8 +4,8 @@
       <span :class="collapseBtnClass" style="cursor: pointer; font-size: 18px" @click="collapse"></span>
 
       <el-breadcrumb separator="/" style="display: inline-block; margin-left: 10px">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+        <el-breadcrumb-item :to="'/'">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>{{ $route.name }}</el-breadcrumb-item>
       </el-breadcrumb>
 
     </div>
@@ -21,13 +21,23 @@
 </template>
 
 <script>
-    export default {
-        name: "Header",
-        props: {
-            collapseBtnClass: String,
-            collapse: Boolean
-        }
+  export default {
+    name: "Header",
+    props: {
+      collapseBtnClass: String,
+      collapse: Boolean,
+    },
+    computed: {
+      currentPathName () {
+        return this.$store.state.currentPathName;　　//需要监听的数据
+      }
+    },
+    watch: {
+      currentPathName (newVal, oldVal) {
+        console.log(newVal)
+      }
     }
+  }
 </script>
 
 <style scoped>

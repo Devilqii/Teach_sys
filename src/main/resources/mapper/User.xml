@@ -3,29 +3,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.devilqi.demo.mapper.UserMapper">
     <update id="update">
-        update sys_user
+        update bs_data
         <set>
-            <if test="username != null">
-                username = #{username},
+            <if test="filename != null">
+              filename = #{filename},
             </if>
-            <!--<if test="password != null">-->
-                <!--password=#{password}-->
-            <!--</if>-->
-            <if test="nickname != null">
-                nickname = #{nickname},
+            <if test="termtime != null">
+              termtime = #{termtime},
             </if>
-            <if test="email != null">
-                email = #{email},
+            <if test="courseno != null">
+              courseno = #{courseno},
             </if>
-            <if test="phone != null">
-                phone = #{phone},
+            <if test="coursename != null">
+              coursename = #{coursename},
             </if>
-            <if test="address != null">
-                address = #{address}
+            <if test="method != null">
+              method = #{method}
+            </if>
+            <if test="stumajor != null">
+              stumajor = #{stumajor}
             </if>
         </set>
         <where>
-            id=#{id}
+          id=#{id}
         </where>
     </update>
 </mapper>

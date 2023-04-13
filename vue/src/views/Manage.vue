@@ -2,19 +2,18 @@
   <el-container style="min-height: 100vh">
 
     <el-aside :width="sideWidth + 'px'" style="background-color: rgb(238, 241, 246)">
-      <Aside :isCollapse="isCollapse" :logoTextShow="logoTextShow"/>
+      <Aside :isCollapse="isCollapse" :logoTextShow="logoTextShow" />
     </el-aside>
 
     <el-container>
       <el-header style="border-bottom: 1px solid #ccc;">
-        <Header :collapseBtnClass="collapseBtnClass" :collapse="isCollapse"/>
+        <Header :collapseBtnClass="collapseBtnClass" :collapse="collapse" />
       </el-header>
 
       <el-main>
         <!--表示当前页面的子路由会在 <router-view /> 里面展示-->
         <router-view/>
       </el-main>
-
     </el-container>
   </el-container>
 </template>
@@ -43,6 +42,7 @@ export default {
   methods: {
     collapse() {  //点击收缩按钮触发
       this.isCollapse = !this.isCollapse
+      this.logoTextShow=!this.logoTextShow
       if (this.isCollapse) {  //收缩
         this.sideWidth = 64
         this.collapseBtnClass = 'el-icon-s-unfold'
