@@ -31,8 +31,8 @@
       <el-table-column prop="termtime" label="学期时间"></el-table-column>
       <el-table-column prop="courseno" label="课程编号"></el-table-column>
       <el-table-column prop="coursename" label="课程名称"></el-table-column>
-      <el-table-column prop="method" label="考核方式"></el-table-column>
-      <el-table-column prop="stumajor" label="学生专业"></el-table-column>
+      <!--<el-table-column prop="method" label="考核方式"></el-table-column>-->
+      <!--<el-table-column prop="stumajor" label="学生专业"></el-table-column>-->
 
 
       <el-table-column label="操作">
@@ -85,6 +85,29 @@
         coursename: "",
         method: "",
         stumajor: "",
+        classno: "",
+        lecturer: "",
+        counselor: "",
+        totalhours: "",
+        overhours: "",
+        thishours: "",
+        weeks: "",
+        classroomhours: "",
+        exercisehours: "",
+        experimentalhours: "",
+        computerhours: "",
+        mobilehours: "",
+        other: "",
+        date: "",
+        one: "",
+        two: "",
+        three: "",
+        four: "",
+        five: "",
+        six: "",
+        seven: "",
+        lecturersignature: "",
+        directorsignature: "",
         form: {},
         dialogFormVisible: false,
         multipleSelection: []
@@ -104,7 +127,30 @@
             courseno: this.courseno,
             coursename: this.coursename,
             method: this.method,
-            stumajor: this.stumajor
+            stumajor: this.stumajor,
+            classno: this.classno,
+            lecturer: this.lecturer,
+            counselor: this.counselor,
+            totalhours: this.totalhours,
+            overhours: this.overhours,
+            thishours: this.thishours,
+            weeks: this.weeks,
+            classroomhours: this.classroomhours,
+            exercisehours: this.exercisehours,
+            experimentalhours: this.experimentalhours,
+            computerhours: this.computerhours,
+            mobilehours: this.mobilehours,
+            other: this.other,
+            date: this.date,
+            one: this.one,
+            two: this.two,
+            three: this.three,
+            four: this.four,
+            five: this.five,
+            six: this.six,
+            seven: this.seven,
+            lecturersignature: this.lecturersignature,
+            directorsignature: this.directorsignature
           }
         }).then(res => {
           console.log(res)
@@ -162,6 +208,29 @@
         this.coursename = ""
         this.method = ""
         this.stumajor = ""
+        this.classno = ""
+        this.lecturer = ""
+        this.counselor = ""
+        this.totalhours = ""
+        this.overhours = ""
+        this.thishours = ""
+        this.weeks = ""
+        this.classroomhours = ""
+        this.exercisehours = ""
+        this.experimentalhours = ""
+        this.computerhours = ""
+        this.mobilehours = ""
+        this.other = ""
+        this.date = ""
+        this.one = ""
+        this.two = ""
+        this.three = ""
+        this.four = ""
+        this.five = ""
+        this.six = ""
+        this.seven = ""
+        this.lecturersignature = ""
+        this.directorsignature = ""
         this.load()
 
       },

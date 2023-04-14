@@ -9,6 +9,9 @@ import request from '@/utils/request';
 
 Vue.config.productionTip = false
 
+//在main.js中
+Vue.prototype.$hostURL='http://localhost:8081'
+
 Vue.use(ElementUI, {size: 'small'})
 
 Vue.prototype.request = request
